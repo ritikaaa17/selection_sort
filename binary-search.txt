@@ -1,0 +1,72 @@
+#include<iostream.h>
+#include<conio.h>
+#include<process.h>
+
+int A[7], flag=0,L=0,U=6;
+
+void Insert()
+{
+ int i;
+ cout<<"Enter 7 elements in the array: \n";
+ for(i=0;i<7;i++)
+  {
+   cin>>A[i];
+  }
+}
+
+void Printarr()
+{
+ int i;
+ cout<<"\nThe array is: \n";
+ for(i=0;i<7;i++)
+  {
+   cout<<A[i];
+   cout<<"\t";
+  }
+getch();
+}
+
+void BSearch()
+{
+  int MID,k;
+  cout<<"\nEnter element to be searched: ";
+  cin>>k;
+  while((flag!=1)&&(L<U))
+   {
+    MID=(L+U)/2;
+     if(k==A[MID])
+      {
+  cout<<"\nELement found at: "<<MID;
+  getch();
+       flag=1;
+      }
+     if(k<A[MID])
+      U=MID-1;
+     else
+      L=MID+1;
+   }
+  if(flag==0)
+  cout<<"\nUnsuccessful";
+  getch();
+}
+
+void main()
+{
+ int ch;
+ L: clrscr();
+ cout<<"\n         MENU\n";
+ cout<<"\n1. Insert\n2. Binary Search\n3. Print Array\n4. Exit";
+ cout<<"\nEnter your choice(1-4): ";
+ cin>>ch;
+    switch(ch)
+     {
+      case 1: Insert();
+	goto L;
+      case 2: BSearch();
+	goto L;
+      case 3: Printarr();
+	goto L;
+      case 4: exit(0);
+     }
+getch();
+}
